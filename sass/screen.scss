@@ -3,15 +3,128 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-@import "compass/reset";
 
+@import "reset.scss";
+@import "breakpoint";
+@import "mixins.scss";
 /* Base */
 
 
 $c-prime: black;
 $c-sec: white;
 $c-tert: gray;
+$c-wt: #fff;
+$c-qua: rgb(102,102,102);
+$c-tint-qua: lighten($c-qua, 20%);
+$c-tint-qua-54: lighten($c-qua, 54%);
+$c-tint-qua-56: lighten($c-qua, 56%);
+$px-320: 320px;
+$px-480: 480px;
+$px-600: 600px;
+$px-768: 768px;
+$px-1024: 1024px;
+$px-1200: 1200px;
+$px-5: 0.312em;
+$px-10: 0.625em;
+$px-20: 1.35em;
 
+
+.b-f{
+	font-family: 'Roboto', sans-serif;
+}
+
+.h-f{
+	font-family: 'Playfair Display', serif;
+}
+
+.p-tb {
+	padding:20px 0;
+
+}
+
+
+a {
+	text-decoration: none;
+	color:$c-wt;
+}
+
+.b-sizing {
+	-webkit-box-sizing: border-box; 
+ 	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+*, *:after, *:before {
+	@extend .b-sizing;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+	@extend .b-f;
+}
+
+
+
+.margin-t-10 { 
+  margin-top: $px-10;
+}
+
+.margin-t-20 { 
+  margin-top: $px-20;
+}
+
+.margin-b-20 {
+  margin-bottom: $px-20;
+}
+
+.pad-b-10 {
+  padding-bottom: $px-10;
+}
+
+.pad-b-20 {
+  padding-bottom: $px-20;
+}
+
+.padding-inner {
+  padding: $px-10;
+}
+
+.padding-lr {
+  padding-left: $px-10;
+  padding-right: $px-10;
+}
+
+.margin-center {
+  margin: 0 auto;
+  display: block;
+}
+
+.align-text {
+  text-align: center;
+}
+
+hr {
+  margin: $px-10 0;
+}
+
+h1 {
+	border-top: black solid 2px;
+	padding-bottom: 20px;
+	@extend .h-f;
+
+}
+
+h2 {
+	font-size: 110%;
+	font-weight: bold;
+	@extend .h-f;
+}
+
+h3 {
+	font-size:100%;
+	margin: 0;
+	padding: 0; 
+}
 
 /* Layout */
 .l-row {
@@ -27,7 +140,7 @@ $c-tert: gray;
     list-style: none;
     position: relative;
 
-    @include breakpoint($width-37) {
+    @include breakpoint($px-320) {
       width: 100%;
       margin: 0 3.84615384615% 0 0;
     }
@@ -38,7 +151,7 @@ $c-tert: gray;
 }
 
 
-@media screen and (min-width: $width-37) {
+@media screen and (min-width: $px-320) {
   .l-col-1 { width: 4.8076923077% }
   .l-col-2 { width: 13.4615384615% }
   .l-col-3 { width: 22.1153846154% }
@@ -54,5 +167,138 @@ $c-tert: gray;
 }
 
 /* Modules */
+
+header {
+	background: $c-tert;
+	color: $c-wt;
+	width: 100%;
+	padding: $px-20;
+	overflow: hidden;
+}
+
+
+.button {
+  padding: 10px;
+  @include b-radius (5px);
+  display: inline-block;
+  //text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  color: $c-wt;
+  font-size: 90%;
+  font-weight: bold;
+}
+
+.logo {
+	float: right;
+	width: 100px;
+}
+
+.main-btn {
+	background: $c-prime;
+}
+
+.search {
+	background: $c-qua;
+	padding: $px-10;
+	form {
+		//@extend .margin-center;
+		width: 98%;
+	}
+}
+
+
+footer{
+	background: $c-prime;
+	color: $c-wt;
+	position: fixed;
+	bottom:0;
+	width: 100%;
+	padding: $px-10; 
+	ul {
+		padding:0px;
+		margin: 0px;
+		li {
+			display: table-cell;
+			width: 25%;
+			text-align: center;
+			padding: 0 3%;
+
+		}
+	}
+}
+
+input[type="text"], input[type="search"], input[type="range"], textarea {
+	width: 98%;
+	padding: $px-5;
+}
+
+.wrapper{
+	padding: $px-20;
+}
+
+.person {
+	img {
+		border: 1px $c-qua solid;
+		padding: 5px;
+	}
+
+	h2 {
+		margin-top:0px; 
+	}
+
+	p:first-child {
+		margin-top:0px; 
+
+	}
+
+	.fn {
+		font-weight: bold;
+	}
+
+}
+
+.user-name {
+	@extend h2;
+}
+
+.border-tb {
+	border-top: black solid 2px;
+	border-bottom: black solid 2px;
+}
+
+.gallery {
+	@extend .border-tb;
+	@extend .p-tb;
+
+}
+
+.t-center {
+	text-align: center;
+}
+
+.g-im {
+	border-color: red;
+}
+
+
+.t-a-r {
+	text-align: right;
+}
+
+.p-top{
+	padding-bottom: 10px;
+
+}
+
+.upload {
+	background: #20409a;
+	padding: 10px;
+	color: white;
+	text-align: center;
+
+}
+
+
 
 
