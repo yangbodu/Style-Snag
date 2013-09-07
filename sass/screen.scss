@@ -1,0 +1,58 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+
+/* Base */
+
+
+$c-prime: black;
+$c-sec: white;
+$c-tert: gray;
+
+
+/* Layout */
+.l-row {
+    clear: both;
+    max-width: 70em;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+[class^="l-col-"] {
+    float: left;
+    //margin: 0 3.84615384615% 0 0;
+    list-style: none;
+    position: relative;
+
+    @include breakpoint($width-37) {
+      width: 100%;
+      margin: 0 3.84615384615% 0 0;
+    }
+}
+
+[class^="l-col-"]:last-child {
+    margin: 0;
+}
+
+
+@media screen and (min-width: $width-37) {
+  .l-col-1 { width: 4.8076923077% }
+  .l-col-2 { width: 13.4615384615% }
+  .l-col-3 { width: 22.1153846154% }
+  .l-col-4 { width: 30.7692307692% }
+  .l-col-5 { width: 39.4230769231% }
+  .l-col-6 { width: 48.0769230769% }
+  .l-col-7 { width: 56.7307692308% }
+  .l-col-8 { width: 65.3846153846% }
+  .l-col-9 { width: 74.0384615385% }
+  .l-col-10 { width: 82.6923076923% }
+  .l-col-11 { width: 91.3461538462% }
+  .l-col-12 { width: 100%; margin: 0 }
+}
+
+/* Modules */
+
+
